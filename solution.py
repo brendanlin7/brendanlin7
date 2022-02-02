@@ -12,7 +12,7 @@ def welcome_assignment_answers(question):
         answer = "No"
         return(answer) 
     elif question == "Is it possible to decrypt a message without a key? - Yes/No":
-        answer = "No"
+        answer = "Yes"
         return(answer) 
     elif question == 'Is it possible to decode a message without a key? - Yes/No':
         answer = "No"
@@ -28,6 +28,9 @@ def welcome_assignment_answers(question):
         return(answer) 
     elif question == "What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number":
         answer = 4
+        return(answer)
+    else: 
+        answer='No'
         return(answer) 
     
     #return(answer)

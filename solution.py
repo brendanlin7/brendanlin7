@@ -19,7 +19,7 @@ def welcome_assignment_answers(question):
         answer = "42b76fe51778764973077a5a94056724"
     elif question == "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number":
         answer = 5
-    elif question == "What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number":
+    elif question == "What layer of the TCP/IP model the protocol TCP belongs to?":
         answer = 4
     return(answer)
 # Complete all the questions.

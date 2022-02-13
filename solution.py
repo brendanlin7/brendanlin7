@@ -10,7 +10,19 @@ def webServer(port=13331):
   #Prepare a server socket
   serverSocket.bind(("localhost", port)) #socket is reachable by any address, hence the "", and the port-13331, as specified in the webServer function
   #Fill in start
+  
+  # connect the client 
+  serverSocket.connect(("localhost", port))  
+ 
+  # send some data 
+  request = "GET / HTTP/1.1\r\nHost:%s\r\n\r\n" % target_host"
+  client.send(request.encode())  
 
+  # receive some data 
+  response = client.recv(4096)  
+  http_response = repr(response)
+  http_response_len = len(http_response)
+  
   #Fill in end
 
   while True:

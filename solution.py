@@ -13,15 +13,6 @@ def webServer(port=13331):
   serverSocket.listen(1)
   # connect the client 
   serverSocket.connect(("localhost", port))  
- 
-  # send some data 
-  request = "GET / HTTP/1.1\r\nHost:%s\r\n\r\n" % target_host"
-  client.send(request.encode())  
-
-  # receive some data 
-  response = client.recv(4096)  
-  http_response = repr(response)
-  http_response_len = len(http_response)
   
   #Fill in end
 
@@ -32,14 +23,15 @@ def webServer(port=13331):
     try:
 
       try:
-        message = "Congratulations! You've used your first webserver!"   #Fill in start    #Fill in end
+        message = connectionSocket.recv(1024)   #Fill in start    #Fill in end
         filename = message.split()[1]
         f = open(filename[1:])
         outputdata = f.read() #Fill in start     #Fill in end
         
         #Send one HTTP header line into socket.
         #Fill in start
-        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")
+        okMessage = 'HTTP/1.1 200 OK \r\n'
+        connectionSocket.send(okMessage.encode())
         #Fill in end
 
         #Send the content of the requested file to the client

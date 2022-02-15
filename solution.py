@@ -10,7 +10,7 @@ def webServer(port=13331):
   #Prepare a server socket
   serverSocket.bind(("localhost", port)) #socket is reachable by any address, hence the "", and the port-13331, as specified in the webServer function
   #Fill in start
-  
+  serverSocket.listen(1)
   # connect the client 
   serverSocket.connect(("localhost", port))  
  
@@ -28,18 +28,18 @@ def webServer(port=13331):
   while True:
     #Establish the connection
     #print('Ready to serve...')
-    connectionSocket, addr = #Fill in start      #Fill in end
+    connectionSocket, addr = serverSocket.accept() #Fill in start      #Fill in end
     try:
 
       try:
         message = #Fill in start    #Fill in end
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata = #Fill in start     #Fill in end
+        outputdata = f.read() #Fill in start     #Fill in end
         
         #Send one HTTP header line into socket.
         #Fill in start
-
+        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")
         #Fill in end
 
         #Send the content of the requested file to the client
@@ -51,13 +51,13 @@ def webServer(port=13331):
       except IOError:
         # Send response message for file not found (404)
         #Fill in start
-
+        connectionSocket.send("HTTP/1.1 404 Not Found\n\n")
         #Fill in end
 
 
         #Close client socket
         #Fill in start
-
+        serverSocket.close()
         #Fill in end
 
     except (ConnectionResetError, BrokenPipeError):

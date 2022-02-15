@@ -12,7 +12,7 @@ def webServer(port=13331):
   #Fill in start
   serverSocket.listen(1)
   # connect the client 
-  serverSocket.connect(("localhost", port))  
+  # serverSocket.connect(("localhost", port))  
   
   #Fill in end
 

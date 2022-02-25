@@ -13,7 +13,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.connect(mailserver, port)
     # Fill in end
 
-    recv = clientSocket.recv(1024).decode()
+    recv = clientSocket.recv(1024)
     #print(recv) #You can use these print statement to validate return codes from the server.
     #if recv[:3] != '220':
     #    print('220 reply not received from server.')
@@ -28,7 +28,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
-    mailFrom = "MAIL FROM: <127.0.0.1> \r\n"
+    mailFrom = "MAIL FROM: <brendanlin7@gmail.com> \r\n"
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
     #print("After MAIL FROM command: " + recv2)
@@ -38,7 +38,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send RCPT TO command and handle server response.
     # Fill in start
-    rcptTo = "RCPT TO: <127.0.0.1> \r\n"
+    rcptTo = "RCPT TO: <brendanlin7@gmail.com> \r\n"
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
     #print("After RCPT TO command: " + recv3)
@@ -69,7 +69,9 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Fill in end
 
     # Message ends with a single period, send message end and handle server response.
-    # Fill in start
+    # Fill in
+    clientSocket.send(".\r\n".encode())  # sends period, then blank line
+    recv5 = clientSocket.recv(1024).decode()  # amount of data to be sent
     # Fill in end
 
     # Send QUIT command and handle server response.

@@ -58,8 +58,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send message data.
     # Fill in start
-    subject = "Subject: Testing SMTP \r\n\r\n"
-    clientSocket.send(subject.encode())
+    #subject = "Subject: Testing SMTP \r\n\r\n"
+    #clientSocket.send(subject.encode())
     clientSocket.send(msg.encode())
     clientSocket.send(endmsg.encode())
     recv5 = clientSocket.recv(1024).decode()
@@ -79,7 +79,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.send("QUIT\r\n".encode())
     recv7 = clientSocket.recv(1024).decode()
     #print(message)
-    clientSocket.close()
+    #clientSocket.close()
     # Fill in end
 
 

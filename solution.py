@@ -70,8 +70,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in
-    clientSocket.send(".\r\n".encode())  # sends period, then blank line
-    recv6 = clientSocket.recv(1024).decode()  # amount of data to be sent
+    #clientSocket.send(".\r\n".encode())  # sends period, then blank line
+    #recv6 = clientSocket.recv(1024).decode()  # amount of data to be sent
     # Fill in end
 
     # Send QUIT command and handle server response.
